@@ -1,0 +1,88 @@
+<div class="section-shaped my-0 skew-separator skew-mini">
+    <div class="page-header page-header-small header-filter"
+    style="background-image: url('https://www.ilprimatonazionale.it/wp-content/uploads/2024/01/TUNISIA_2020.jpg');">
+      <div class="page-header badge-primary"
+      ></div>
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">Bienvenue!</h1>
+              <h6 class="text-white">Connectez-vous à la plateforme de la municipalité pour soumettre votre demande de projet.</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="upper">
+    <div class="container">
+      <div class="col-lg-5 col-md-8 mx-auto">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header">
+            <img alt="Card image" class="card-img" src="assets/img/ill/bg5-1.svg" />
+  
+            <h4 class="card-title text-center">Se connecter</h4>
+          </div>
+          <div class="card-body">
+            <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="ni ni-email-83"> </i>
+                    </span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Nom d'utilisateur"
+                    type="text"
+                    name="username"
+                    [(ngModel)]="form.username" required
+                     #username="ngModel"
+                  />
+                </div>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                Nom d'utilisateur est obligatoire!
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="ni ni-lock-circle-open"> </i>
+                    </span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Mot de passe"
+                    type="password"
+                    name="password"
+                    [(ngModel)]="form.password" required
+                    #password="ngModel"
+                  />
+                </div>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors.required">Mot de passe requis
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  Le mot de passe doit être au moins de 6 caractères
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary my-4" type="submit">
+                  Se connecter
+                </button>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-success" [routerLink]="['/examples/register-validateur']">
+                  Créer nouveau compte
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  

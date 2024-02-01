@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="section-shaped my-0 skew-separator skew-mini">
+    <div class="page-header page-header-small header-filter">
+      <div class="page-header-image" style="background-image: url('assets/img/pages/nathan-dumlao.jpg');"></div>
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">Détails</h1>
+              <p class="text-lead text-white">
+                Explorez les détails complets des projets municipaux en un seul endroit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="upper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <div class="card card-invoice">
+            <div class="card-header text-center">
+              <br />
+
+              <div class="row justify-content-md-between">
+                <div class="col-md-6">
+                  <h3 class="mt-3 text-left">
+                    {{proj.titre}} <br />
+
+                    <small class="mr-2">
+                      <button class="btn btn-warning">{{proj.status}}</button> </small>
+                    <small class="mr-2">
+                      <button class="btn btn-info">{{proj.budget}} DT</button> </small>
+                    <br><br>
+                    <button class="btn btn-primary">{{proj.categorie}}</button>
+                  </h3>
+                </div>
+                <div class="col-md-6">
+                  <div class="row mt-5">
+                    <div class="col-md-5">Date de début prévue</div>
+                    <br>
+                    <div class="col-md-5">
+                      <button class="btn btn-success">
+                        {{proj.debut | date:'dd-MM-yyyy'}}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col-md-5">Date de fin prévue</div>
+                    <br>
+                    <div class="col-md-5">
+                      <button class="btn btn-danger">
+                        {{proj.fin | date:'dd-MM-yyyy'}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <h3 class="mt-3 text-left">
+                      Description :
+                    </h3>
+                    <br />
+                    <small>{{proj.description}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,193 @@
+<div class="wrapper">
+  <div class="section-shaped my-0 skew-separator skew-mini">
+    <div class="page-header page-header-small header-filter">
+      <div
+        class="page-header-image"
+        style="background-image: url('assets/img/pages/photo-15.jpg');"
+      ></div>
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <p class="text-lead text-white">
+                Bienvenue dans l'espace dédié à l'ajout de nouveaux projets pour notre municipalité.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="upper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <div class="card card-invoice">
+            <form class="js-validate" [formGroup]="projectForm" (ngSubmit)="addProject()">
+              <div class="container">
+                <h3 class="title mt-3">Formulaire d'Ajout de Projet Municipal</h3>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="labels">
+                      Titre du projet <span class="text-danger"> * </span>
+                    </label>
+                    <input
+                      aria-label="titre"
+                      class="form-control"
+                      name="titre"
+                      placeholder="Titre du projet"
+                      type="text"
+                      formControlName="titre"
+                      [(ngModel)]="projet.titre"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="labels">
+                      Lieu du Projet <span class="text-danger"> * </span>
+                    </label>
+                    <input
+                      aria-label="lieu"
+                      class="form-control"
+                      name="lieu"
+                      placeholder="Lieu du Projet"
+                      type="text"
+                      formControlName="lieu"
+                      [(ngModel)]="projet.lieu"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="labels">
+                      Budget <span class="text-danger"> * </span>
+                    </label>
+                    <input
+                      aria-label="budget"
+                      class="form-control"
+                      name="budget"
+                      placeholder="20 000"
+                      type="number"
+                      formControlName="budget"
+                      [(ngModel)]="projet.budget"
+                    />
+                  </div>
+                </div>
+                
+                <div *ngIf="projectForm.get('budget').hasError('required') && projectForm.get('budget').touched" class="text-danger">
+                  Budget est requis.
+                </div>
+                <div *ngIf="projectForm.get('titre').hasError('required') && projectForm.get('titre').touched" class="text-danger">
+                  Le titre du projet est requis.
+                </div>
+                <div *ngIf="projectForm.get('lieu').hasError('required') && projectForm.get('lieu').touched" class="text-danger">
+                  Lieu du projet est requis.
+                </div>
+                <br />
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="js-form-message mb-4">
+                      <label class="labels"> Date de Début Prévue <span class="text-danger"> * </span>
+
+                      </label>
+                      <input
+                        aria-label="debut"
+                        class="form-control"
+                        type="date"
+                        formControlName="debut"
+                        [(ngModel)]="projet.debut"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="js-form-message mb-4">
+                      <label class="labels">
+                        Date de Fin Prévue <span class="text-danger"> * </span>
+                      </label>
+                      <input
+                        aria-label="fin"
+                        class="form-control"
+                        name="fin"
+                        type="date"
+                        formControlName="fin"
+                        [(ngModel)]="projet.fin"
+                      />
+                    </div>
+                    <div *ngIf="projectForm.get('debut').hasError('required') && projectForm.get('debut').touched" class="text-danger">
+                      Date de début est requise.
+                    </div>
+                    <div *ngIf="projectForm.get('fin').hasError('required') && projectForm.get('fin').touched" class="text-danger">
+                      Date de fin est requise.
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="mb-4">
+                      <label class="labels">
+                        Catégorie <span class="text-danger"> * </span>
+                      </label>
+                      <select
+                        class="form-control"
+                        formControlName="category"
+                        [(ngModel)]="projet.categorie"
+                      >
+                        <option value="Infrastructure"> Infrastructure </option>
+                        <option value="Environnement"> Environnement </option>
+                        <option value="Culture et Loisirs"> Culture et Loisirs </option>
+                        <option value="Éducation"> Éducation </option>
+                        <option value="Santé"> Santé </option>
+                        <option value="Économie et Emploi"> Économie et Emploi </option>
+                        <option value="Technologie et Innovation"> Technologie et Innovation </option>
+                        <option value="Logement"> Logement </option>
+                        <option value="Transport"> Transport </option>
+                        <option value="Sécurité"> Sécurité </option>
+                      </select>
+                    </div>
+                    <div *ngIf="projectForm.get('category').hasError('required') && projectForm.get('category').touched" class="text-danger">
+                      Catégorie est requise.
+                    </div>  
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col">
+                    <label class="labels">
+                      Description du projet <span class="text-danger"> * </span>
+                    </label>
+                    <textarea
+                      aria-label="description"
+                      class="form-control"
+                      name="description"
+                      placeholder="Description du projet"
+                      type="text"
+                      formControlName="description"
+                      [(ngModel)]="projet.description"
+                      >
+                    </textarea>
+                  
+                  </div>
+                </div>
+                <div *ngIf="projectForm.get('description').hasError('required') && projectForm.get('description').touched" class="text-danger">
+                  Description est requise.
+                </div>
+                <br />
+                
+                <div
+                class="d-flex justify-content-between align-items-center"
+              >
+                <a href="javascript:void(0)" [routerLink]="['/examples/president-page']">
+                  <span class="fas fa-angle-left mr-2"> </span> Retour aux projets
+                </a>
+                <button class="btn btn-info btn-sm" type="submit" [disabled]="projectForm.invalid">
+                  Envoyer
+                </button>
+              </div>
+
+              <br/>
+              
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,4 @@
+export enum ERole {
+  PRESIDENT = 'PRESIDENT',
+  VALIDATEUR = 'VALIDATEUR'
+  }

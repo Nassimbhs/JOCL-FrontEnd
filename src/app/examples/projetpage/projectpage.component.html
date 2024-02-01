@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <div class="section-shaped my-0 skew-separator skew-mini">
+    <div class="page-header page-header-small header-filter">
+      <div
+        class="page-header-image"
+        style="background-image: url('assets/img/pages/nathan-dumlao.jpg');"
+      ></div>
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">Les projets</h1>
+              <p class="text-lead text-white">
+                En tant que président, vous avez la possibilité de visualiser les détails de chaque projet
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="upper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <div class="card card-invoice">
+            <div class="card-header text-center">
+              
+              <br />
+
+              <div class="row justify-content-md-between">
+                <div class="col-md-4">
+                  <h6 class="mt-3 text-left">
+                    Chercher par titre : 
+                  </h6>
+                  <input type="text" name="titre" class="form-control" placeholder="Chercher" [(ngModel)]="titre" (ngModelChange)="search()">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table class="table text-right">
+                      <thead class="bg-default">
+                        <tr>
+                          <th class="text-right text-white" scope="col" (click)="sort('titre')">
+                            titre <i class="fa fas fa-sort"></i>
+                          </th>
+                          <th class="text-right text-white" scope="col" (click)="sort('debut')">
+                            Date de création <i class="fa fas fa-sort"></i>
+                          </th>
+                          <th class="text-right text-white" scope="col"(click)="sort('status')">
+                            Status <i class="fa fas fa-sort"></i>
+                          </th>
+                          <th class="text-right text-white" scope="col">
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pro of project | paginate: { itemsPerPage: pageSize, currentPage: p } | orderBy: key: reverse">
+                          <td>{{pro.titre}}</td>
+                          <td>{{pro.dateCreation | date: 'dd/MM/yyyy -- HH:mm:ss'}}</td>
+                          <td>{{pro.status}}</td>
+                          <td>
+                            <span style="margin-right: 10px;">
+                              <i class="fas fa-info-circle" style="color: grey;" title="Détails" (click)="detail(pro.id)" ></i>
+                          </span>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                      <tfoot>
+                        <div class="alert alert-danger" *ngIf="project.length<1">
+                          Il n'y a actuellement aucun projet!
+                        </div>
+                      </tfoot>
+                    </table>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
